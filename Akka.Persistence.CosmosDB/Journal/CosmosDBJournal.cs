@@ -130,7 +130,7 @@ namespace Akka.Persistence.CosmosDB.Journal
                 var document = await documentClient.Value.ReadDocumentAsync(documentLink, new RequestOptions() { PartitionKey = new PartitionKey(persistenceId) });
                 return ((MetadataEntry)((dynamic)document.Resource)).SequenceNr;
             }
-            catch (DocumentClientException ex)
+            catch
             {
                 return 0;
             }
